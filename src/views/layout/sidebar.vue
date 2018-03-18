@@ -74,6 +74,8 @@
                 url: menuNav.url
               }
               this.ADD_CONTENT_TAB(tab)
+            } else {
+              return console.error('未能找到可用tab标签页！')
             }
           }
           this.menuNavActive = tab.id + ''
@@ -85,10 +87,8 @@
         for (var i = 0; i < menuNavList.length; i++) {
           if (menuNavList[i].list && menuNavList[i].list.length >= 1) {
             return this.getMenuNavByRouteName(name, menuNavList[i].list)
-          } else {
-            if (getRouteNameByUrl(menuNavList[i].url) === name) {
-              return menuNavList[i]
-            }
+          } else if (getRouteNameByUrl(menuNavList[i].url) === name) {
+            return menuNavList[i]
           }
         }
       },
